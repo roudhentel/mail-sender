@@ -49,3 +49,4 @@ Its a Rest API built in NodeJS for sending email.
        Application Error Code: 10 for Subject is Required.
        Every time the app received error code 5000 on mail server 1, the app will display error code 10 accross all our clients.
        We need to make our Codes uniform for all the clients.
+8. Add logger. This will record all request coming in and the response for each request.
