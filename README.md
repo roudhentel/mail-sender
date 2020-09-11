@@ -6,6 +6,7 @@ Its a Rest API built in NodeJS for sending email.
 
 - [Installation and Running of the App](#installation)
   - [Node.js](#nodejs)
+  - [Usage](#usage)
 - [TODO](#todo)
 
 ## Installation[⬆](#table-of-contents)
@@ -22,7 +23,19 @@ Its a Rest API built in NodeJS for sending email.
   - sedinblueapikey (Visit [website](https://www.sendinblue.com/?utm_source=adwords_brand&utm_medium=lastclick&utm_content=SendinBlue&utm_extension&utm_term=sendinblue&utm_matchtype=e&utm_campaign=1153673712&utm_network=g&km_adid=355470527172&km_adposition&km_device=c&utm_adgroupid=53093595276&gclid=Cj0KCQjwwOz6BRCgARIsAKEG4FUtTvisLqo6XxygNbhWXkZCPsA9jkJRJVQO4OApB77a86fUaMUx2pYaAs0WEALw_wcB) to learn how to acquire API key)
 5. Run the app
   `npm start`
-  
+
+## Usage[⬆](#table-of-contents)
+ 1. Endpoint: /api/email/send
+    body: application/json
+    {
+      "subject": "Email Subject",
+      "body": "Email body",
+      "from": "from@email.com",
+      "to": ["email1@gmail.com","email2@gmail.com"],
+      "cc": ["email1@gmail.com","email2@gmail.com"],
+      "bcc": ["email1@gmail.com","email2@gmail.com"]
+    } 
+
 ## Todo[⬆](#table-of-contents)
 1. Implement async API for sending email - This endpoint will accept all incoming request for sending mail and put them on queue. Once completed, a webhook that is provided on the request body will be use to notify the requestor for the completion of the task.
 2. Validation of email - Add additional checking where in before sending the email, the application will check if the email is valid. Each of the mail server has it but need an upgraded account to use that endpoint.
