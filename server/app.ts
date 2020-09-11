@@ -5,7 +5,7 @@ import bodyParser from 'body-parser';
 import { Routes } from './routes';
 
 const app: express.Application = express();
-let port = process.env.PORT || 3000;
+let port = process.env.PORT || 8080;
 
 app.use(bodyParser.json({
     limit: '5mb'
@@ -15,7 +15,8 @@ app.use((err: any, req: Request, res: Response, next: NextFunction) => {
     if (err) {
         res.status(400).json({
             success: false,
-            errMsg: err.message
+            errMsg: "Invalid request body",
+            details: err.message
         });
 
         return;

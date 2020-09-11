@@ -5,6 +5,14 @@ import { plainToClass } from "class-transformer";
 export const validatorMW = (toClass: any) => {
     return function (req: Request, res: Response, next: NextFunction) {
         var data = plainToClass(toClass, req.body);
+        if (Array.isArray(req.body)) {
+            res.status(400).json({
+                success: false,
+                errMsg: "Invalid request body"
+            });
+
+            return;
+        }
         validate(data, { skipMissingProperties: true }).then(errors => {
             // errors is an array of validation errors
             if (errors.length > 0) {
@@ -23,22 +31,5 @@ export const validatorMW = (toClass: any) => {
             }
             next();
         });
-    }
-}
-
-export const checkIfValidJson = () => {
-    return function (req: Request, res: Response, next: NextFunction) {
-        try {
-            console.log("here");
-            JSON.parse(req.body);
-            next();
-        } catch {
-            res.status(400).json({
-                success: false,
-                errMsg: "Invalid JSON body"
-            });
-
-            return;
-        }
     }
 }
