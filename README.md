@@ -1,6 +1,9 @@
 # mail-sender
 
 Its a Rest API built in NodeJS for sending email.
+The application provide an abstraction between two different email service providers. If one of
+the services goes down, your service can quickly failover to a different provider without affecting your
+customers.
 
 ## Table of contents
 
