@@ -9,6 +9,7 @@ export class EmailModel {
 
     @Expose()
     @IsDefined()
+    @Length(1)
     body!: string;
 
     @Expose()
